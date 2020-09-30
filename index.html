@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Syntasso C</title>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+		/>
+		<!-- socket.io library -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+		<style>
+			#baseURLInput {
+				margin-top: 10px;
+			}
+
+			#baseURLLabel {
+				display: inline;
+			}
+
+			#submit-form {
+				position: absolute;
+				left: 0;
+				width: 46%;
+				margin: 10px;
+			}
+			#code-editor {
+				height: 25em;
+				width: 100%;
+			}
+
+			#clearBtn {
+				position: absolute;
+				top: 10px;
+				right: 5px;
+			}
+
+			#stdout-container {
+				border: 1px solid slategrey;
+				border-radius: 5px;
+				position: absolute;
+				right: 0;
+				top: 40px;
+				width: 46%;
+				height: 100%;
+				margin: 10px;
+				padding: 10px;
+			}
+
+			#dockerConfig {
+				height: 30px;
+				text-align: center;
+			}
+
+			#addNewTestCaseBtn {
+				border-radius: 50%;
+				border: 1px solid slategray;
+				font-size: large;
+				margin: 4px 2px;
+			}
+
+			#addNewTestCaseBtn:hover {
+				border-radius: 50%;
+				border: 1px solid rgb(14, 106, 197);
+			}
+
+			#runBtn:disabled,
+			#clearBtn:disabled {
+				border: 1px solid #999999;
+				background-color: #cccccc;
+				color: #666666;
+				cursor: default;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<label for="baseURLInput" id="baseURLLabel">Engine URL</label>
+			<input
+				name="baseURLInput"
+				type="text"
+				id="baseURLInput"
+				value="http://localhost:8082"
+			/>
+			<button id="createConnectionBtn">Create Connection</button>
+			<form id="submit-form">
+				<textarea id="code-editor"></textarea> <br />
+				<input placeholder="dockerConfig" id="dockerConfig" type="number" />
+				<br />
+				<span id="testCases">
+					<input placeholder="sampleInput0" class="sampleInput" type="text" />
+					<input
+						placeholder="expectedOutput0"
+						class="expectedOutput"
+						type="text"
+					/>
+					<br />
+				</span>
+				<button id="addNewTestCaseBtn">+</button>
+				<button id="runBtn" disabled>Run Code</button>
+			</form>
+			<div id="stdout-container-container">
+				<p id="stdout-container"></p>
+				<button id="clearBtn" disabled>Clear logs</button>
+			</div>
+		</div>
+		<!-- script to create socket connection -->
+		<script src="script.js"></script>
+	</body>
+</html>
