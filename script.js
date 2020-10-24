@@ -63,7 +63,6 @@ addNewTestCaseBtn.addEventListener("click", (event) => {
 runBtn.addEventListener("click", (event) => {
 	event.preventDefault();
 	let codeEditor = document.getElementById("code-editor");
-	let dockerConfigField = document.getElementById("dockerConfig");
 
 	const sampleInputs = Array.from(
 		document.getElementsByClassName("sampleInput")
@@ -73,7 +72,6 @@ runBtn.addEventListener("click", (event) => {
 	);
 
 	const code = codeEditor.value;
-	const dockerConfig = dockerConfigField.value || 0;
 	let testCases = [];
 
 	sampleInputs.forEach((sampleInput, index) => {
@@ -86,7 +84,6 @@ runBtn.addEventListener("click", (event) => {
 	const payload = {
 		code: `${code}`,
 		socketId: `${socketId}`,
-		dockerConfig: `${dockerConfig}`,
 		testCases: testCases,
 	};
 	console.dir({ baseURL, testCases, payload, sampleInputs, expectedOutputs });
